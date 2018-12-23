@@ -1,17 +1,29 @@
 public class Main {
     public static void main(String[] args) {
-        Student student1 = new Student("Денис", "Піцул");
-        Student student2 = new Student("Володимир", "Перон");
-        Student student3 = new Student("Андрій", "Онищук");
-        Student student4 = new Student("Роман", "Осадчук");
-        Student student5 = new Student("Олександр", "Срібний");
-        Student student6 = new Student("Наташа", "Нігайчук");
-        Student student7 = new Student("Роман", "Мовченюк");
-        Student student8 = new Student("Андрій", "Макаренко");
-        Student student9 = new Student("Станіслав", "Гуменюк");
-        Student student10 = new Student("Андрій", "Нігайчук");
-        Student student11 = new Student("Максим", "Гурів");
-        Student student12 = new Student("Богдан", "Нігайчук");
+        Student student1 = new Student("Денис", "Піцул", true, 20, false,
+                85, 43);
+        Student student2 = new Student("Володимир", "Перон", true, 19, false,
+                85, 54);
+        Student student3 = new Student("Андрій", "Онищук", true, 20, false,
+                80, 32);
+        Student student4 = new Student("Роман", "Осадчук", true, 19, false,
+                92, 65);
+        Student student5 = new Student("Олександр", "Срібний", true, 19, false,
+                88, 49);
+        Student student6 = new Student("Наташа", "Нігайчук", true, 19, false,
+                75, 54);
+        Student student7 = new Student("Роман", "Мовченюк", true, 19, false,
+                90, 103);
+        Student student8 = new Student("Андрій", "Макаренко", true, 19, false,
+                67, 12);
+        Student student9 = new Student("Станіслав", "Гуменюк", true, 19, false,
+                90, 41);
+        Student student10 = new Student("Андрій", "Нігайчук", true, 20, false,
+                75, 43);
+        Student student11 = new Student("Максим", "Гурів", true, 18, false,
+                55, 43);
+        Student student12 = new Student("Богдан", "Нігайчук", true, 18, false,
+                70, 43);
 
         Group group = new Group(343);
         try {
