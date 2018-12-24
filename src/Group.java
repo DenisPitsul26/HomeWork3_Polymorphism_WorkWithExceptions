@@ -27,7 +27,7 @@ public class Group {
         boolean isGroupFull = true;
         boolean thisStudentIsAlreadyInTheGroup = false; //для того щоб ми не добавляни 2 раза одного студента
         for (Student aStudentsList : studentsList) {
-            if (aStudentsList == student) {
+            if (aStudentsList.equals(student)) {
                 thisStudentIsAlreadyInTheGroup = true;
             }
         }
@@ -48,16 +48,18 @@ public class Group {
     }
 
     public void deleteStudentFromGroup(Student student) {
-        boolean thereAreNoThisStudentInGroup = false;
-        for (int i = 0; i < studentsList.length; i++) {
-            if (studentsList[i] == student) {
-                thereAreNoThisStudentInGroup = true;
-                studentsList[i] = null;
-                System.out.println(student.getFirstName()+" "+ student.getLastName() +" has deleted from group.");
+        if (student != null) {
+            boolean thereAreNoThisStudentInGroup = false;
+            for (int i = 0; i < studentsList.length; i++) {
+                if (studentsList[i].equals(student)) {
+                    thereAreNoThisStudentInGroup = true;
+                    studentsList[i] = null;
+                    System.out.println(student.getFirstName() + " " + student.getLastName() + " has deleted from group.");
+                }
             }
-        }
-        if (!thereAreNoThisStudentInGroup) {
-            System.out.println("Such a student is not in the group.");
+            if (!thereAreNoThisStudentInGroup) {
+                System.out.println("Such a student is not in the group.");
+            }
         }
     }
 
@@ -74,27 +76,28 @@ public class Group {
         return null;
     }
 
-    @Override
-    public String toString() {
-        //сам studentsList не сортував тому що по завданню потрібно просто вивести відсортовано
-        // а не відсортувати studentsList. тому використав додатковий масив
-
-
+    public Student[] getArrayWithoutNullElements(Student[] studentsList1){
         int lengthStudents = 0;
-        for (int i = 0; i < studentsList.length; i++) {
-            if (studentsList[i] != null) {
+        for (int i = 0; i < studentsList1.length; i++) {
+            if (studentsList1[i] != null) {
                 lengthStudents++;
             }
         }
 
         Student[] students = new Student[lengthStudents];
         int index = 0;
-        for (int i = 0; i < studentsList.length; i++) {
-            if (studentsList[i] != null) {
-                students[index] = studentsList[i];
+        for (int i = 0; i < studentsList1.length; i++) {
+            if (studentsList1[i] != null) {
+                students[index] = studentsList1[i];
                 index++;
             }
         }
+
+        return students;
+    }
+    public Student[] getSortedArray() {
+        Student[] students = null;
+        students = getArrayWithoutNullElements(studentsList);
 
         for (int i = 0; i < students.length-1; i++) {
             for (int j = 0; j < students.length-1; j++) {
@@ -115,6 +118,13 @@ public class Group {
             }
         }
 
-        return "Group{\n"+ Arrays.toString(students) +"}";
+
+        return students;
+    }
+
+    @Override
+    public String toString() {
+
+        return "Group{\n"+ Arrays.toString(getSortedArray()) +"}";
     }
 }

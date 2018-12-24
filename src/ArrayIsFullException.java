@@ -1,4 +1,4 @@
-public class ArrayIsFullException extends ArrayIndexOutOfBoundsException {
+public class ArrayIsFullException extends Exception {
 
     @Override
     public String getMessage() {
