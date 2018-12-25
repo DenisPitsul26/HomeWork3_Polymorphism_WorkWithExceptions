@@ -26,9 +26,12 @@ public class Group {
     public void addStudentToGroup(Student student) throws ArrayIsFullException{
         boolean isGroupFull = true;
         boolean thisStudentIsAlreadyInTheGroup = false; //для того щоб ми не добавляни 2 раза одного студента
-        for (Student aStudentsList : studentsList) {
-            if (aStudentsList.equals(student)) {
-                thisStudentIsAlreadyInTheGroup = true;
+        for (int i = 0; i < studentsList.length; i++) {
+            if (studentsList[i] != null) {
+                if (studentsList[i].getFirstName().equals(student.getFirstName())
+                && studentsList[i].getLastName().equals(student.getLastName())) {
+                    thisStudentIsAlreadyInTheGroup = true;
+                }
             }
         }
         if (!thisStudentIsAlreadyInTheGroup) {
@@ -51,10 +54,13 @@ public class Group {
         if (student != null) {
             boolean thereAreNoThisStudentInGroup = false;
             for (int i = 0; i < studentsList.length; i++) {
-                if (studentsList[i].equals(student)) {
-                    thereAreNoThisStudentInGroup = true;
-                    studentsList[i] = null;
-                    System.out.println(student.getFirstName() + " " + student.getLastName() + " has deleted from group.");
+                if (studentsList[i] != null) {
+                    if (studentsList[i].getFirstName().equals(student.getFirstName())
+                            && studentsList[i].getLastName().equals(student.getLastName())) {
+                        thereAreNoThisStudentInGroup = true;
+                        studentsList[i] = null;
+                        System.out.println(student.getFirstName() + " " + student.getLastName() + " has deleted from group.");
+                    }
                 }
             }
             if (!thereAreNoThisStudentInGroup) {
