@@ -24,6 +24,10 @@ public class Group {
     }
 
     public void addStudentToGroup(Student student) throws ArrayIsFullException{
+        if (student == null) {
+            System.out.println("This student is null.");
+            return;
+        }
         boolean isGroupFull = true;
         boolean thisStudentIsAlreadyInTheGroup = false; //для того щоб ми не добавляни 2 раза одного студента
         for (int i = 0; i < studentsList.length; i++) {
